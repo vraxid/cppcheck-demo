@@ -15,13 +15,14 @@ class DataManager {
 
     for (int i = 0; i < size; i++) {
       if (i % 2 == 0) data[i] = i * 2;
+else data[i] = 0; // initialized all not just even
     }
   }
 
   void print() {
-    for (int i = 0; i <= size; i++) {
+    for (int i = 0; i < size; i++) {
       cout << data[i] << " ";
-    }
+    }// made it i<size because out of bounds access
     cout << endl;
   }
 
@@ -31,7 +32,7 @@ class DataManager {
     return data[0];
   }
 
-  ~DataManager() { delete data; }
+  ~DataManager() { delete[] data; }// must use [] to delete all
 };
 
 void unsafeFunction() {
@@ -70,9 +71,9 @@ void vectorIssues() {
 
   v.push_back(1);
   v.push_back(2);
-
+if (v.size() > 10)
   cout << v[10] << endl;
-
+else cout << "Out of bounds" << endl;
   v.clear();
   cout << v.front() << endl;
 }
